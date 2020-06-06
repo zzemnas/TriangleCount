@@ -27,15 +27,11 @@ public class EstraiCoppiePlus implements PairFlatMapFunction<Tuple2<Tuple2<Integ
 			
 			for (Tuple2<Integer,Integer> p2:l._2){
 				
-				if (p1._1.compareTo(p2._1)==-1) {
+				if (p1._1.compareTo(p2._1)!=0) {
 					
-					if ((p1._2<p2._2)||(p1._2==p2._2 && p1._1<p2._1)) {
+					if ((p1._2<p2._2)||(p1._2.equals(p2._2) && p1._1<p2._1)) {
 					Tuple2<Tuple2<Integer,Integer>,Tuple2<Integer,Integer>> s = new Tuple2<Tuple2<Integer,Integer>,Tuple2<Integer,Integer>>(p1,p2);
 					output.add(new Tuple2<Tuple2<Tuple2<Integer, Integer>, Tuple2<Integer, Integer>>, Tuple2<Integer, Integer>>(s,u));
-					}
-					else if ((p1._2>p2._2)||(p1._2==p2._2 && p1._1>p2._1)) {
-						Tuple2<Tuple2<Integer,Integer>,Tuple2<Integer,Integer>> s = new Tuple2<Tuple2<Integer,Integer>,Tuple2<Integer,Integer>>(p2,p1);
-						output.add(new Tuple2<Tuple2<Tuple2<Integer, Integer>, Tuple2<Integer, Integer>>, Tuple2<Integer, Integer>>(s,u));
 					}
 					}
 			}
